@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROVANT - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .frame {
+            width: 430px;
+            height: 932px;
+            background: #0A0A0A;
+            border-radius: 55px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 11px;
+            left: 152px;
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 100;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: absolute;
+            top: 70px;
+            left: 32px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Header */
+        .header-title {
+            position: absolute;
+            top: 142px;
+            left: 32px;
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: #FFFFFF;
+            letter-spacing: 4.2px;
+        }
+
+        .header-subtitle {
+            position: absolute;
+            top: 195px;
+            left: 32px;
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+        }
+
+        /* Form */
+        .form-container {
+            position: absolute;
+            top: 260px;
+            left: 32px;
+            width: 366px;
+        }
+
+        /* Input Group */
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-label {
+            font-size: 12px;
+            color: #D4AF37;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .input-field {
+            width: 366px;
+            height: 64px;
+            background: #141414;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            padding: 0 20px;
+            color: #FFFFFF;
+            font-size: 17px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Name Row */
+        .name-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .name-row .input-field {
+            width: 175px;
+        }
+
+        /* Checkbox */
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checkbox-label {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        .checkbox-label a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 366px;
+            height: 64px;
+            background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+            border: none;
+            border-radius: 6px;
+            color: #050505;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 430px;
+            text-align: center;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <!-- Dynamic Island -->
+        <div class="dynamic-island"></div>
+        
+        <!-- Back Button -->
+        <div class="back-btn">←</div>
+        
+        <!-- Header -->
+        <div class="header-title">Request Access</div>
+        <div class="header-subtitle">Join the privileged few</div>
+        
+        <!-- Form -->
+        <div class="form-container">
+            <!-- Name Row -->
+            <div class="input-group">
+                <div class="name-row">
+                    <div>
+                        <label class="input-label">First Name</label>
+                        <input type="text" class="input-field" placeholder="John">
+                    </div>
+                    <div>
+                        <label class="input-label">Last Name</label>
+                        <input type="text" class="input-field" placeholder="Smith">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="input-group">
+                <label class="input-label">Email Address</label>
+                <input type="email" class="input-field" placeholder="john@company.com">
+            </div>
+            
+            <!-- Phone -->
+            <div class="input-group">
+                <label class="input-label">Phone</label>
+                <input type="tel" class="input-field" placeholder="+1 (555) 000-0000">
+            </div>
+            
+            <!-- Password -->
+            <div class="input-group">
+                <label class="input-label">Create Password</label>
+                <div class="input-wrapper">
+                    <input type="password" class="input-field" placeholder="••••••••">
+                    <span class="eye-icon">👁</span>
+                </div>
+            </div>
+            
+            <!-- Checkbox -->
+            <div class="checkbox-container">
+                <div class="checkbox"></div>
+                <div class="checkbox-label">
+                    I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I understand that AEROVANT serves high-net-worth individuals exclusively.
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button class="submit-btn">Submit Request</button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Already have access?<a href="#">Sign In</a>
+        </div>
+    </div>
+</body>
+</html>

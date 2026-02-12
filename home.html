@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROVANT - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .frame {
+            width: 430px;
+            height: 932px;
+            background: #0A0A0A;
+            border-radius: 55px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 11px;
+            left: 152px;
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 100;
+        }
+
+        /* Header Background */
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 430px;
+            height: 280px;
+            background: linear-gradient(180deg, rgba(212,175,55,0.08) 0%, transparent 100%);
+        }
+
+        /* Gold Line */
+        .gold-line {
+            position: absolute;
+            top: 280px;
+            left: 32px;
+            width: 366px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+
+        /* Header Content */
+        .greeting {
+            position: absolute;
+            top: 70px;
+            left: 32px;
+            font-size: 14px;
+            color: #D4AF37;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .user-name {
+            position: absolute;
+            top: 95px;
+            left: 32px;
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: #FFFFFF;
+            letter-spacing: 1.8px;
+        }
+
+        /* Avatar */
+        .avatar {
+            position: absolute;
+            top: 75px;
+            left: 342px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid #D4AF37;
+            background: #141414;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        /* Stats Pills */
+        .stats-container {
+            position: absolute;
+            top: 165px;
+            left: 32px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-pill {
+            padding: 14px 24px;
+            background: rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-icon {
+            font-size: 18px;
+        }
+
+        .stat-text {
+            font-size: 13px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            letter-spacing: 0.65px;
+        }
+
+        /* Featured Section */
+        .featured-header {
+            position: absolute;
+            top: 320px;
+            left: 32px;
+            width: 366px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #FFFFFF;
+            letter-spacing: 2.4px;
+        }
+
+        .view-all {
+            font-size: 12px;
+            color: #D4AF37;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Featured Card */
+        .featured-card {
+            position: absolute;
+            top: 365px;
+            left: 32px;
+            width: 366px;
+            height: 480px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            padding: 10px 20px;
+            background: #D4AF37;
+            color: #050505;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+        }
+
+        .featured-name {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            letter-spacing: 1.8px;
+            line-height: 1.1;
+        }
+
+        .featured-specs {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .featured-spec {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .featured-spec span {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: #D4AF37;
+        }
+
+        .price-note {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1.2px;
+        }
+
+        /* Collection Section */
+        .collection-header {
+            position: absolute;
+            top: 885px;
+            left: 32px;
+            width: 366px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Catalog Items */
+        .catalog-container {
+            position: absolute;
+            top: 935px;
+            left: 32px;
+            width: 366px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .catalog-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: #141414;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+        }
+
+        .catalog-thumb {
+            width: 120px;
+            height: 90px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .catalog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .catalog-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .catalog-name {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+            letter-spacing: 0.4px;
+        }
+
+        .catalog-year {
+            font-size: 13px;
+            color: #D4AF37;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .catalog-price {
+            font-size: 17px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .catalog-arrow {
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 24px;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 32px;
+            width: 366px;
+            height: 80px;
+            background: rgba(10,10,10,0.95);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 12px;
+        }
+
+        .nav-item.active {
+            color: #D4AF37;
+            background: rgba(212,175,55,0.1);
+        }
+
+        .nav-icon {
+            font-size: 28px;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            bottom: 10px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <!-- Dynamic Island -->
+        <div class="dynamic-island"></div>
+        
+        <!-- Header -->
+        <div class="header-bg"></div>
+        <div class="gold-line"></div>
+        <div class="greeting">Welcome back</div>
+        <div class="user-name">Alexander</div>
+        <div class="avatar">👤</div>
+        
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stat-pill">
+                <span class="stat-icon">🚁</span>
+                <span class="stat-text">3 Aircraft</span>
+            </div>
+            <div class="stat-pill">
+                <span class="stat-icon">💎</span>
+                <span class="stat-text">Platinum</span>
+            </div>
+        </div>
+        
+        <!-- Featured -->
+        <div class="featured-header">
+            <div class="section-title">Featured</div>
+            <div class="view-all">View All</div>
+        </div>
+        
+        <div class="featured-card">
+            <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=85" alt="Helicopter" class="featured-image">
+            <div class="featured-overlay">
+                <div class="featured-badge">New Arrival</div>
+                <div class="featured-name">AEROVANT Aether X1</div>
+                <div class="featured-specs">
+                    <span class="featured-spec">Range: <span>850 nm</span></span>
+                    <span class="featured-spec">Speed: <span>195 kts</span></span>
+                    <span class="featured-spec">Seats: <span>8</span></span>
+                </div>
+                <div class="price-row">
+                    <span class="price">$12.8M</span>
+                    <span class="price-note">Base configuration</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Collection -->
+        <div class="collection-header">
+            <div class="section-title">Your Collection</div>
+            <div class="view-all">Browse</div>
+        </div>
+        
+        <div class="catalog-container">
+            <div class="catalog-item">
+                <div class="catalog-thumb">
+                    <img src="https://images.unsplash.com/photo-1542351567-cd7b06df4f34?w=500&q=80" alt="Helicopter">
+                </div>
+                <div class="catalog-info">
+                    <div class="catalog-name">Bell 429 GlobalRanger</div>
+                    <div class="catalog-year">2023 • Delivered</div>
+                    <div class="catalog-price">$8.2M</div>
+                </div>
+                <div class="catalog-arrow">→</div>
+            </div>
+            
+            <div class="catalog-item">
+                <div class="catalog-thumb">
+                    <img src="https://images.unsplash.com/photo-1508614589041-895b8c9d7ef5?w=500&q=80" alt="Helicopter">
+                </div>
+                <div class="catalog-info">
+                    <div class="catalog-name">Airbus ACH160</div>
+                    <div class="catalog-year">2024 • On Order</div>
+                    <div class="catalog-price">$18.5M</div>
+                </div>
+                <div class="catalog-arrow">→</div>
+            </div>
+            
+            <div class="catalog-item">
+                <div class="catalog-thumb">
+                    <img src="https://images.unsplash.com/photo-1542351567-cd7b06df4f34?w=500&q=80" alt="Helicopter">
+                </div>
+                <div class="catalog-info">
+                    <div class="catalog-name">Leonardo AW139</div>
+                    <div class="catalog-year">2022 • In Service</div>
+                    <div class="catalog-price">$14.2M</div>
+                </div>
+                <div class="catalog-arrow">→</div>
+            </div>
+        </div>
+        
+        <!-- Bottom Nav -->
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+                <div class="nav-indicator"></div>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon">⊕</span>
+                <span>Browse</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon">✉</span>
+                <span>Messages</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

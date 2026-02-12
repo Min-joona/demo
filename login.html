@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROVANT - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .frame {
+            width: 430px;
+            height: 932px;
+            background: #0A0A0A;
+            border-radius: 55px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 11px;
+            left: 152px;
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 100;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: absolute;
+            top: 70px;
+            left: 32px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Header */
+        .header-title {
+            position: absolute;
+            top: 142px;
+            left: 32px;
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: #FFFFFF;
+            letter-spacing: 4.2px;
+        }
+
+        .header-subtitle {
+            position: absolute;
+            top: 195px;
+            left: 32px;
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+        }
+
+        /* Form */
+        .form-container {
+            position: absolute;
+            top: 260px;
+            left: 32px;
+            width: 366px;
+        }
+
+        /* Input Group */
+        .input-group {
+            margin-bottom: 28px;
+        }
+
+        .input-label {
+            font-size: 12px;
+            color: #D4AF37;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .input-field {
+            width: 366px;
+            height: 64px;
+            background: #141414;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            padding: 0 20px;
+            color: #FFFFFF;
+            font-size: 17px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Forgot Password */
+        .forgot-link {
+            text-align: right;
+            margin-bottom: 40px;
+        }
+
+        .forgot-link a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1.3px;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 366px;
+            height: 64px;
+            background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+            border: none;
+            border-radius: 6px;
+            color: #050505;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Social Buttons */
+        .social-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: #141414;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #FFFFFF;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 430px;
+            text-align: center;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <!-- Dynamic Island -->
+        <div class="dynamic-island"></div>
+        
+        <!-- Back Button -->
+        <div class="back-btn">←</div>
+        
+        <!-- Header -->
+        <div class="header-title">Welcome Back</div>
+        <div class="header-subtitle">Access your private collection</div>
+        
+        <!-- Form -->
+        <div class="form-container">
+            <!-- Email -->
+            <div class="input-group">
+                <label class="input-label">Email Address</label>
+                <input type="email" class="input-field" placeholder="client@aerovant.com">
+            </div>
+            
+            <!-- Password -->
+            <div class="input-group">
+                <label class="input-label">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" class="input-field" placeholder="••••••••">
+                    <span class="eye-icon">👁</span>
+                </div>
+            </div>
+            
+            <!-- Forgot -->
+            <div class="forgot-link">
+                <a href="#">Forgot Password?</a>
+            </div>
+            
+            <!-- Login Button -->
+            <button class="login-btn">Access Account</button>
+            
+            <!-- Divider -->
+            <div class="divider">
+                <div class="divider-line"></div>
+                <span>or continue with</span>
+                <div class="divider-line"></div>
+            </div>
+            
+            <!-- Social -->
+            <div class="social-row">
+                <div class="social-btn">G</div>
+                <div class="social-btn"></div>
+                <div class="social-btn">in</div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Not a client yet?<a href="#">Request Access</a>
+        </div>
+    </div>
+</body>
+</html>

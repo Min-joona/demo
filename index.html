@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AEROVANT - Ultra-Luxury Helicopters</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROVANT - Onboarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,1338 +12,288 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F4E8C1;
-            --gold-dark: #AA8C2C;
-            --black-deep: #050505;
-            --black-soft: #0A0A0A;
-            --black-elevated: #141414;
-            --white-pure: #FFFFFF;
-            --white-soft: rgba(255, 255, 255, 0.9);
-            --white-muted: rgba(255, 255, 255, 0.6);
-            --white-subtle: rgba(255, 255, 255, 0.2);
-            --accent-red: #C41E3A;
-        }
-
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--black-deep);
-            color: var(--white-pure);
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            overflow: hidden;
         }
 
-        /* Cinematic Background Effects */
-        .cinema-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #000000 70%);
-        }
-
-        .noise-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        .gold-dust {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--gold-primary);
-            border-radius: 50%;
-            opacity: 0;
-            animation: float-particle 15s infinite;
-        }
-
-        @keyframes float-particle {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) scale(0);
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100vh) scale(1.5);
-            }
-        }
-
-        /* Device Frame */
-        .device-frame {
-            width: 390px;
-            height: 844px;
-            background: var(--black-soft);
-            border-radius: 50px;
+        .frame {
+            width: 430px;
+            height: 932px;
+            background: #0A0A0A;
+            border-radius: 55px;
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                0 0 0 1px rgba(212, 175, 55, 0.3),
-                0 0 0 2px rgba(212, 175, 55, 0.1),
-                0 50px 100px -20px rgba(0, 0, 0, 0.8),
-                0 0 100px rgba(212, 175, 55, 0.1);
         }
 
-        .device-frame::before {
-            content: '';
+        /* Dynamic Island */
+        .dynamic-island {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 35px;
+            top: 11px;
+            left: 152px;
+            width: 126px;
+            height: 37px;
             background: #000;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            z-index: 1001;
+            border-radius: 20px;
+            z-index: 100;
         }
 
-        /* Screen Container */
-        .screen {
-            width: 100%;
-            height: 100%;
+        /* Hero Image */
+        .hero-image {
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
+            width: 430px;
+            height: 634px;
+            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1000&q=85') center/cover;
         }
 
-        .screen.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ==================== SCREEN 1: CINEMATIC ONBOARDING ==================== */
-        .onboarding-screen {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hero-visual {
-            position: relative;
-            height: 65%;
-            overflow: hidden;
-        }
-
-        .helicopter-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.8) 100%),
-                        url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80') center/cover;
-            transform: scale(1.1);
-            animation: slow-zoom 20s infinite alternate;
-        }
-
-        @keyframes slow-zoom {
-            0% { transform: scale(1.1); }
-            100% { transform: scale(1.2); }
-        }
-
+        /* Rotor Blur */
         .rotor-blur {
             position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 20px;
-            background: rgba(255,255,255,0.1);
+            top: 114px;
+            left: 75px;
+            width: 280px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
             filter: blur(20px);
             border-radius: 50%;
-            animation: rotor-spin 0.1s infinite linear;
         }
 
-        @keyframes rotor-spin {
-            0% { opacity: 0.3; transform: translateX(-50%) scaleX(1); }
-            50% { opacity: 0.6; transform: translateX(-50%) scaleX(1.2); }
-            100% { opacity: 0.3; transform: translateX(-50%) scaleX(1); }
-        }
-
+        /* Gold Line */
         .gold-line {
             position: absolute;
-            bottom: 0;
+            top: 631px;
             left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            animation: shimmer 3s infinite;
+            width: 430px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
         }
 
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        .brand-overlay {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 10;
-        }
-
+        /* Brand Name */
         .brand-name {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 430px;
+            text-align: center;
             font-family: 'Cinzel', serif;
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 400;
-            letter-spacing: 0.3em;
-            color: var(--gold-primary);
-            text-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-            animation: gold-glow 3s ease-in-out infinite;
-        }
-
-        @keyframes gold-glow {
-            0%, 100% { text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
-            50% { text-shadow: 0 0 60px rgba(212, 175, 55, 0.6), 0 0 100px rgba(212, 175, 55, 0.3); }
-        }
-
-        .brand-tagline {
-            font-size: 11px;
-            letter-spacing: 0.5em;
-            color: var(--white-muted);
-            margin-top: 8px;
+            letter-spacing: 16.8px;
+            color: #D4AF37;
             text-transform: uppercase;
         }
 
-        .onboarding-content {
-            flex: 1;
-            padding: 40px 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: linear-gradient(180deg, transparent 0%, var(--black-soft) 20%);
-            margin-top: -60px;
-            position: relative;
-            z-index: 5;
+        /* Brand Tagline */
+        .brand-tagline {
+            position: absolute;
+            top: 125px;
+            left: 0;
+            width: 430px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 7.2px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            font-weight: 300;
         }
 
-        .headline-container {
-            text-align: center;
+        /* Content Area */
+        .content {
+            position: absolute;
+            top: 570px;
+            left: 32px;
+            width: 366px;
+        }
+
+        /* Headline */
+        .headline-small {
+            font-size: 15px;
+            letter-spacing: 5.25px;
+            color: #D4AF37;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 10px;
+            display: block;
         }
 
         .headline {
             font-family: 'Cinzel', serif;
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            line-height: 1.15;
+            letter-spacing: 1.9px;
+            margin-bottom: 20px;
         }
 
-        .headline span {
-            display: block;
-            font-size: 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            color: var(--gold-primary);
-            margin-bottom: 8px;
-        }
-
+        /* Subheadline */
         .subheadline {
-            font-size: 14px;
-            color: var(--white-muted);
-            line-height: 1.6;
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
             font-weight: 300;
+            margin-bottom: 32px;
         }
 
+        /* Specs Row */
         .specs-row {
             display: flex;
             justify-content: center;
-            gap: 32px;
-            margin: 24px 0;
+            gap: 40px;
+            margin-bottom: 32px;
         }
 
         .spec-item {
             text-align: center;
+            position: relative;
+        }
+
+        .spec-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
         }
 
         .spec-value {
             font-family: 'Cinzel', serif;
-            font-size: 24px;
-            color: var(--gold-primary);
+            font-size: 28px;
+            color: #D4AF37;
             display: block;
+            margin-bottom: 6px;
         }
 
         .spec-label {
-            font-size: 10px;
-            color: var(--white-muted);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        .cta-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn-primary {
-            width: 100%;
-            padding: 20px;
-            border-radius: 4px;
-            border: none;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--black-deep);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.6s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-secondary {
-            width: 100%;
-            padding: 18px;
-            border-radius: 4px;
-            border: 1px solid var(--white-subtle);
-            background: transparent;
-            color: var(--white-soft);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-            background: rgba(212, 175, 55, 0.05);
-        }
-
-        .progress-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-        }
-
-        .progress-dot {
-            width: 40px;
-            height: 2px;
-            background: var(--white-subtle);
-            transition: all 0.3s;
-        }
-
-        .progress-dot.active {
-            background: var(--gold-primary);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        /* ==================== SCREEN 2: LOGIN ==================== */
-        .auth-screen {
-            padding: 60px 32px 40px;
-            display: flex;
-            flex-direction: column;
-            background: var(--black-soft);
-        }
-
-        .auth-header {
-            margin-bottom: 48px;
-        }
-
-        .back-arrow {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1px solid var(--white-subtle);
-            background: transparent;
-            color: var(--white-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            margin-bottom: 32px;
-            transition: all 0.3s;
-        }
-
-        .back-arrow:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-            transform: translateX(-4px);
-        }
-
-        .auth-title {
-            font-family: 'Cinzel', serif;
-            font-size: 36px;
-            font-weight: 400;
-            margin-bottom: 8px;
-            letter-spacing: 0.1em;
-        }
-
-        .auth-subtitle {
-            color: var(--white-muted);
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        .auth-form {
-            flex: 1;
-        }
-
-        .input-group {
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .input-label {
-            display: block;
             font-size: 11px;
-            color: var(--gold-primary);
-            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 2.75px;
             text-transform: uppercase;
-            margin-bottom: 8px;
             font-weight: 500;
         }
 
-        .input-field {
-            width: 100%;
-            height: 56px;
-            background: var(--black-elevated);
-            border: 1px solid var(--white-subtle);
-            border-radius: 4px;
-            padding: 0 16px;
-            color: var(--white-pure);
-            font-size: 15px;
+        /* Primary Button */
+        .btn-primary {
+            width: 366px;
+            height: 68px;
+            background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+            border: none;
+            border-radius: 6px;
+            color: #050505;
             font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-
-        .input-field::placeholder {
-            color: var(--white-muted);
-        }
-
-        .input-icon {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--white-muted);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 14px;
             cursor: pointer;
+        }
+
+        .btn-arrow {
             font-size: 18px;
         }
 
-        .forgot-link {
-            text-align: right;
-            margin-bottom: 32px;
-        }
-
-        .forgot-link a {
-            color: var(--gold-primary);
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 0.1em;
-            transition: opacity 0.2s;
-        }
-
-        .forgot-link a:hover {
-            opacity: 0.8;
-        }
-
-        .auth-btn {
-            width: 100%;
-            height: 56px;
-            border-radius: 4px;
-            border: none;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--black-deep);
+        /* Secondary Button */
+        .btn-secondary {
+            width: 366px;
+            height: 60px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: rgba(255,255,255,0.9);
             font-family: 'Montserrat', sans-serif;
             font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 32px;
-        }
-
-        .auth-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.4);
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 32px;
-            color: var(--white-muted);
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--white-subtle);
-        }
-
-        .social-row {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .social-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 1px solid var(--white-subtle);
-            background: var(--black-elevated);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 20px;
-        }
-
-        .social-btn:hover {
-            border-color: var(--gold-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
-        }
-
-        .auth-footer {
-            text-align: center;
-            margin-top: auto;
-            padding-top: 32px;
-        }
-
-        .auth-footer p {
-            color: var(--white-muted);
-            font-size: 13px;
-        }
-
-        .auth-footer a {
-            color: var(--gold-primary);
-            text-decoration: none;
-            font-weight: 500;
-            margin-left: 4px;
-        }
-
-        /* ==================== SCREEN 3: SIGN UP ==================== */
-        .checkbox-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 1px solid var(--white-subtle);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-top: 2px;
-            transition: all 0.2s;
-        }
-
-        .checkbox:hover {
-            border-color: var(--gold-primary);
-        }
-
-        .checkbox.checked {
-            background: var(--gold-primary);
-            border-color: var(--gold-primary);
-        }
-
-        .checkbox-label {
-            font-size: 13px;
-            color: var(--white-muted);
-            line-height: 1.5;
-        }
-
-        .checkbox-label a {
-            color: var(--gold-primary);
-            text-decoration: none;
-        }
-
-        .name-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        /* ==================== SCREEN 4: HOME ==================== */
-        .home-screen {
-            padding: 0;
-            background: var(--black-soft);
-            overflow-y: auto;
-            scrollbar-width: none;
-        }
-
-        .home-screen::-webkit-scrollbar {
-            display: none;
-        }
-
-        .home-header {
-            padding: 60px 24px 24px;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
-            position: relative;
-        }
-
-        .home-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 24px;
-            right: 24px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .greeting {
-            font-size: 13px;
-            color: var(--gold-primary);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-
-        .user-name {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
             font-weight: 400;
-            letter-spacing: 0.05em;
-        }
-
-        .profile-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid var(--gold-primary);
-            background: var(--black-elevated);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .profile-avatar:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .stats-bar {
-            display: flex;
-            gap: 16px;
-        }
-
-        .stat-pill {
-            padding: 12px 20px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 100px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stat-pill-icon {
-            font-size: 16px;
-        }
-
-        .stat-pill-text {
-            font-size: 12px;
-            color: var(--white-soft);
-            font-weight: 500;
-        }
-
-        .featured-section {
-            padding: 32px 24px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 20px;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-        }
-
-        .view-all {
-            font-size: 11px;
-            color: var(--gold-primary);
-            letter-spacing: 0.15em;
+            letter-spacing: 2.6px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: opacity 0.2s;
         }
 
-        .view-all:hover {
-            opacity: 0.8;
-        }
-
-        .featured-card {
-            position: relative;
-            height: 400px;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.4s;
-        }
-
-        .featured-card:hover {
-            transform: scale(1.02);
-        }
-
-        .featured-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s;
-        }
-
-        .featured-card:hover .featured-image {
-            transform: scale(1.1);
-        }
-
-        .featured-overlay {
+        /* Progress Dots */
+        .progress-dots {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.9) 100%);
+            bottom: 50px;
+            left: 130px;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 24px;
+            gap: 10px;
         }
 
-        .featured-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            padding: 8px 16px;
-            background: var(--gold-primary);
-            color: var(--black-deep);
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+        .dot {
+            width: 50px;
+            height: 3px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
         }
 
-        .featured-name {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
-            margin-bottom: 8px;
-            letter-spacing: 0.05em;
-        }
-
-        .featured-specs {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .featured-spec {
-            font-size: 12px;
-            color: var(--white-muted);
-        }
-
-        .featured-spec span {
-            color: var(--gold-primary);
-            font-weight: 600;
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            color: var(--gold-primary);
-        }
-
-        .price-note {
-            font-size: 11px;
-            color: var(--white-muted);
-        }
-
-        .catalog-section {
-            padding: 0 24px 100px;
-        }
-
-        .catalog-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .catalog-item {
-            display: flex;
-            gap: 16px;
-            padding: 16px;
-            background: var(--black-elevated);
-            border: 1px solid var(--white-subtle);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .catalog-item:hover {
-            border-color: var(--gold-primary);
-            transform: translateX(8px);
-        }
-
-        .catalog-thumb {
-            width: 100px;
-            height: 80px;
-            border-radius: 4px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .catalog-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .catalog-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .catalog-name {
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .catalog-year {
-            font-size: 12px;
-            color: var(--gold-primary);
-            margin-bottom: 8px;
-        }
-
-        .catalog-price {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .catalog-arrow {
-            display: flex;
-            align-items: center;
-            color: var(--white-muted);
-            font-size: 20px;
-            transition: all 0.3s;
-        }
-
-        .catalog-item:hover .catalog-arrow {
-            color: var(--gold-primary);
-            transform: translateX(4px);
-        }
-
-        .bottom-nav {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 48px);
-            max-width: 342px;
-            height: 70px;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: var(--white-muted);
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 8px 16px;
-        }
-
-        .nav-item:hover {
-            color: var(--white-soft);
-        }
-
-        .nav-item.active {
-            color: var(--gold-primary);
-        }
-
-        .nav-icon {
-            font-size: 24px;
-        }
-
-        .nav-indicator {
-            position: absolute;
-            bottom: 8px;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--gold-primary);
-            box-shadow: 0 0 10px var(--gold-primary);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-in {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-
-        /* Responsive */
-        @media (max-width: 420px) {
-            .device-frame {
-                width: 100vw;
-                height: 100vh;
-                border-radius: 0;
-                border: none;
-            }
+        .dot.active {
+            background: #D4AF37;
         }
     </style>
 </head>
 <body>
-
-    <!-- Cinematic Background -->
-    <div class="cinema-bg"></div>
-    <div class="noise-overlay"></div>
-    <div class="gold-dust" id="particles"></div>
-
-    <div class="device-frame">
-        <div class="notch"></div>
-
-        <!-- ==================== SCREEN 1: ONBOARDING ==================== -->
-        <div class="screen onboarding-screen active" id="screen1">
-            <div class="hero-visual">
-                <div class="helicopter-bg"></div>
-                <div class="rotor-blur"></div>
-                <div class="gold-line"></div>
-                <div class="brand-overlay">
-                    <h1 class="brand-name">AEROVANT</h1>
-                    <p class="brand-tagline">Ultra-Luxury Aviation</p>
+    <div class="frame">
+        <!-- Dynamic Island -->
+        <div class="dynamic-island"></div>
+        
+        <!-- Hero Section -->
+        <div class="hero-image"></div>
+        <div class="rotor-blur"></div>
+        <div class="gold-line"></div>
+        
+        <!-- Brand -->
+        <div class="brand-name">AEROVANT</div>
+        <div class="brand-tagline">Ultra-Luxury Aviation</div>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="headline-small">Welcome to</div>
+            <div class="headline">Excellence in Flight</div>
+            <div class="subheadline">Experience the world's most exclusive collection of luxury helicopters. Crafted for those who accept only the extraordinary.</div>
+            
+            <!-- Specs -->
+            <div class="specs-row">
+                <div class="spec-item">
+                    <span class="spec-value">15+</span>
+                    <div class="spec-label">Models</div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">$2M+</span>
+                    <div class="spec-label">Starting</div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">24/7</span>
+                    <div class="spec-label">Concierge</div>
                 </div>
             </div>
-
-            <div class="onboarding-content">
-                <div class="headline-container animate-in">
-                    <h2 class="headline">
-                        <span>Welcome to</span>
-                        Excellence in Flight
-                    </h2>
-                    <p class="subheadline">
-                        Experience the world's most exclusive collection of luxury helicopters. Crafted for those who accept only the extraordinary.
-                    </p>
-                </div>
-
-                <div class="specs-row animate-in delay-1">
-                    <div class="spec-item">
-                        <span class="spec-value">15+</span>
-                        <div class="spec-label">Models</div>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-value">$2M+</span>
-                        <div class="spec-label">Starting</div>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-value">24/7</span>
-                        <div class="spec-label">Concierge</div>
-                    </div>
-                </div>
-
-                <div class="cta-container animate-in delay-2">
-                    <button class="btn-primary" onclick="goToScreen(3)">
-                        Enter Showroom
-                    </button>
-                    <button class="btn-secondary" onclick="goToScreen(2)">
-                        Client Login
-                    </button>
-                </div>
-            </div>
-
-            <div class="progress-indicator">
-                <div class="progress-dot active"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-            </div>
+            
+            <!-- Buttons -->
+            <button class="btn-primary">
+                Enter Showroom
+                <span class="btn-arrow">→</span>
+            </button>
+            <button class="btn-secondary">Client Login</button>
         </div>
-
-        <!-- ==================== SCREEN 2: LOGIN ==================== -->
-        <div class="screen auth-screen" id="screen2">
-            <div class="auth-header">
-                <button class="back-arrow" onclick="goToScreen(1)">←</button>
-                <h1 class="auth-title">Welcome Back</h1>
-                <p class="auth-subtitle">Access your private collection</p>
-            </div>
-
-            <form class="auth-form" onsubmit="handleLogin(event)">
-                <div class="input-group">
-                    <label class="input-label">Email Address</label>
-                    <input type="email" class="input-field" placeholder="client@aerovant.com" required>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Password</label>
-                    <div style="position: relative;">
-                        <input type="password" class="input-field" placeholder="••••••••" required>
-                        <span class="input-icon">👁</span>
-                    </div>
-                </div>
-
-                <div class="forgot-link">
-                    <a href="#">Forgot Password?</a>
-                </div>
-
-                <button type="submit" class="auth-btn">Access Account</button>
-
-                <div class="divider">or continue with</div>
-
-                <div class="social-row">
-                    <button type="button" class="social-btn">G</button>
-                    <button type="button" class="social-btn"></button>
-                    <button type="button" class="social-btn">in</button>
-                </div>
-            </form>
-
-            <div class="auth-footer">
-                <p>Not a client yet?<a href="#" onclick="goToScreen(3)">Request Access</a></p>
-            </div>
-        </div>
-
-        <!-- ==================== SCREEN 3: SIGN UP ==================== -->
-        <div class="screen auth-screen" id="screen3">
-            <div class="auth-header">
-                <button class="back-arrow" onclick="goToScreen(1)">←</button>
-                <h1 class="auth-title">Request Access</h1>
-                <p class="auth-subtitle">Join the privileged few</p>
-            </div>
-
-            <form class="auth-form" onsubmit="handleSignup(event)">
-                <div class="name-row">
-                    <div class="input-group">
-                        <label class="input-label">First Name</label>
-                        <input type="text" class="input-field" placeholder="John" required>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Last Name</label>
-                        <input type="text" class="input-field" placeholder="Smith" required>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Email Address</label>
-                    <input type="email" class="input-field" placeholder="john@company.com" required>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Phone</label>
-                    <input type="tel" class="input-field" placeholder="+1 (555) 000-0000" required>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Create Password</label>
-                    <div style="position: relative;">
-                        <input type="password" class="input-field" placeholder="••••••••" required>
-                        <span class="input-icon">👁</span>
-                    </div>
-                </div>
-
-                <div class="checkbox-container">
-                    <div class="checkbox" onclick="toggleCheckbox(this)"></div>
-                    <span class="checkbox-label">
-                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I understand that AEROVANT serves high-net-worth individuals exclusively.
-                    </span>
-                </div>
-
-                <button type="submit" class="auth-btn">Submit Request</button>
-            </form>
-
-            <div class="auth-footer">
-                <p>Already have access?<a href="#" onclick="goToScreen(2)">Sign In</a></p>
-            </div>
-        </div>
-
-        <!-- ==================== SCREEN 4: HOME ==================== -->
-        <div class="screen home-screen" id="screen4">
-            <div class="home-header">
-                <div class="header-top">
-                    <div>
-                        <p class="greeting">Welcome back</p>
-                        <h1 class="user-name">Alexander</h1>
-                    </div>
-                    <div class="profile-avatar">👤</div>
-                </div>
-                <div class="stats-bar">
-                    <div class="stat-pill">
-                        <span class="stat-pill-icon">🚁</span>
-                        <span class="stat-pill-text">3 Aircraft</span>
-                    </div>
-                    <div class="stat-pill">
-                        <span class="stat-pill-icon">💎</span>
-                        <span class="stat-pill-text">Platinum</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-section">
-                <div class="section-header">
-                    <h2 class="section-title">Featured</h2>
-                    <span class="view-all">View All</span>
-                </div>
-
-                <div class="featured-card" onclick="showHelicopterDetail()">
-                    <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80" alt="Luxury Helicopter" class="featured-image">
-                    <div class="featured-overlay">
-                        <span class="featured-badge">New Arrival</span>
-                        <h3 class="featured-name">AEROVANT Aether X1</h3>
-                        <div class="featured-specs">
-                            <span class="featured-spec">Range: <span>850 nm</span></span>
-                            <span class="featured-spec">Speed: <span>195 kts</span></span>
-                            <span class="featured-spec">Seats: <span>8</span></span>
-                        </div>
-                        <div class="price-row">
-                            <span class="price">$12.8M</span>
-                            <span class="price-note">Base configuration</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="catalog-section">
-                <div class="section-header">
-                    <h2 class="section-title">Your Collection</h2>
-                    <span class="view-all">Browse</span>
-                </div>
-
-                <div class="catalog-grid">
-                    <div class="catalog-item">
-                        <div class="catalog-thumb">
-                            <img src="https://images.unsplash.com/photo-1542351567-cd7b06df4f34?w=400&q=80" alt="Helicopter">
-                        </div>
-                        <div class="catalog-info">
-                            <h4 class="catalog-name">Bell 429 GlobalRanger</h4>
-                            <p class="catalog-year">2023 • Delivered</p>
-                            <p class="catalog-price">$8.2M</p>
-                        </div>
-                        <div class="catalog-arrow">→</div>
-                    </div>
-
-                    <div class="catalog-item">
-                        <div class="catalog-thumb">
-                            <img src="https://images.unsplash.com/photo-1508614589041-895b8c9d7ef5?w=400&q=80" alt="Helicopter">
-                        </div>
-                        <div class="catalog-info">
-                            <h4 class="catalog-name">Airbus ACH160</h4>
-                            <p class="catalog-year">2024 • On Order</p>
-                            <p class="catalog-price">$18.5M</p>
-                        </div>
-                        <div class="catalog-arrow">→</div>
-                    </div>
-
-                    <div class="catalog-item">
-                        <div class="catalog-thumb">
-                            <img src="https://images.unsplash.com/photo-1542351567-cd7b06df4f34?w=400&q=80" alt="Helicopter">
-                        </div>
-                        <div class="catalog-info">
-                            <h4 class="catalog-name">Leonardo AW139</h4>
-                            <p class="catalog-year">2022 • In Service</p>
-                            <p class="catalog-price">$14.2M</p>
-                        </div>
-                        <div class="catalog-arrow">→</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bottom-nav">
-                <div class="nav-item active">
-                    <span class="nav-icon">⌂</span>
-                    <span>Home</span>
-                    <div class="nav-indicator"></div>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">⊕</span>
-                    <span>Browse</span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">✉</span>
-                    <span>Messages</span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">⚙</span>
-                    <span>Settings</span>
-                </div>
-            </div>
+        
+        <!-- Progress -->
+        <div class="progress-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </div>
-
-    <script>
-        // Generate gold particles
-        const particleContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-            particleContainer.appendChild(particle);
-        }
-
-        function goToScreen(screenNum) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(`screen${screenNum}`).classList.add('active');
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            goToScreen(4);
-        }
-
-        function handleSignup(e) {
-            e.preventDefault();
-            goToScreen(4);
-        }
-
-        function toggleCheckbox(el) {
-            el.classList.toggle('checked');
-            el.innerHTML = el.classList.contains('checked') ? '✓' : '';
-        }
-
-        function showHelicopterDetail() {
-            alert('Opening detailed specifications for AEROVANT Aether X1...');
-        }
-    </script>
-
 </body>
 </html>
